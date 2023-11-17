@@ -33,72 +33,26 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile7`, function (sprite, l
 let projectile: Sprite = null
 let Myplayer: Sprite = null
 Myplayer = sprites.create(img`
-    ................
-    ................
-    ................
-    ................
-    ..dd............
-    ..dddd..........
-    ...ddddddd......
-    ...ddffffdd.....
-    ....dfffffd.....
-    ....dfffffdd....
-    ....ddffffd.....
-    .....dfffdd.....
-    ...ffddfddff....
-    ..fddddfddddf...
-    .fdddddffddddf..
-    .fddddddfddddf..
-    .fdddddffddddf..
-    .fdddddfdddddf..
-    .fdddddfdddddf..
-    .fddfddfdddfdf..
-    .fddfddfddffdf..
-    .fdfddffddfddf..
-    fddfddfddfdddf..
-    ddfdddfddfddff..
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . d d d . . . 
+    . . . . . . . d d d d d d . . . 
+    . . . . . . d f f f d d . . . . 
+    . . . . . d f f f f f d . . . . 
+    . . . . . d f f f f f d . . . . 
+    . . . . . d f f f f d . . . . . 
+    . . . . . f d d d d f . . . . . 
+    . . . f f d d d f d d f f . . . 
+    . . . f d d d d f d d d f . . . 
+    . . . f d d d d f d d d f . . . 
+    . . . f d f d d f d f d f . . . 
+    . . . f d f d d f d f d f . . . 
+    . . . f d f d d f d f d f . . . 
+    . . . . f d f d d f d f d f . . 
     `, SpriteKind.Player)
-let Wallblock = sprites.create(img`
-    c c c c c c c c c c c c c c c c 
-    c b b b b b b b b c b b b b b b 
-    c b b b b b b b b c b b b b b b 
-    c b b b b b b b b c c b b b b b 
-    c c c c c c c c c c c c c c c c 
-    c b b b b b b c c b b b b b b b 
-    c b b b b c c c b b b b b b b c 
-    c c c c c c c c c c c c c c c c 
-    b b b b b b b b c c c b b b b b 
-    c b b b b b b b b b b c c c c b 
-    c c c c c c c c c c c c c c c c 
-    c b b b b b c c c b b b b b b b 
-    b c c c c c b b b b b b c c c c 
-    c c c c c c c c c c c c c c c c 
-    c b b b b b b b c c c c c c c c 
-    c c c c c c c c b b b b b b b c 
-    `, SpriteKind.Wall)
-let Enemyhurtyou = sprites.create(img`
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . 2 2 2 2 2 2 2 2 . . . . 
-    . . . . 2 9 9 9 9 9 2 2 . . . . 
-    . . . . 2 9 9 9 9 9 2 2 2 . . . 
-    . . . . 2 9 9 9 9 9 2 2 2 2 2 . 
-    . . . . 2 2 2 2 2 2 2 2 2 2 2 . 
-    . . . . 2 2 2 2 2 2 2 2 2 2 2 . 
-    . . . . 2 2 2 2 2 2 2 2 2 2 2 . 
-    . . . 2 2 2 2 2 2 2 2 2 2 2 2 . 
-    . . . 2 2 2 2 2 2 2 2 2 2 2 . . 
-    . . . 2 2 2 2 2 2 2 2 2 2 . . . 
-    . . . . 2 2 2 . . . 2 2 2 2 . . 
-    . . . . 2 2 2 . . . 2 2 2 2 . . 
-    . . . . 2 2 2 . . . . 2 2 2 . . 
-    . . . . 2 2 2 . . . . 2 2 2 . . 
-    `, SpriteKind.Enemy)
-tiles.setCurrentTilemap(tilemap`level1`)
-scene.cameraFollowSprite(Myplayer)
-tiles.placeOnRandomTile(Myplayer, assets.tile`myTile3`)
-tiles.placeOnRandomTile(Enemyhurtyou, assets.tile`myTile3`)
-Enemyhurtyou.follow(Myplayer)
-Myplayer.setBounceOnWall(true)
 controller.moveSprite(Myplayer)
+tiles.setCurrentTilemap(tilemap`level1`)
 info.setLife(3)
+scene.cameraFollowSprite(Myplayer)
+tiles.placeOnRandomTile(Myplayer, assets.tile`myTile5`)
+Myplayer.setBounceOnWall(true)
