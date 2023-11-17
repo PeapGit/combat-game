@@ -27,35 +27,9 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     pause(300)
     sprites.destroyAllSpritesOfKind(SpriteKind.Projectile)
 })
-controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
-    mySprite = sprites.create(img`
-        ................
-        ................
-        ................
-        ................
-        ...........dd...
-        ........ddddd...
-        .....ddddddd....
-        ....ddfffddd....
-        ....dfffffd.....
-        ....dfffffdd....
-        ....ddffffd.....
-        .....dfffdd.....
-        ...ffddfddff....
-        ..fddddfddddf...
-        .fdddddffddddf..
-        .fddddddfddddf..
-        .fdddddffddddf..
-        .fdddddfdddddf..
-        .fdddddfdddddf..
-        .fddfddfdddfdf..
-        .fddfddfddffdf..
-        .fdfddffddfddf..
-        .fdfddfddfdddf..
-        ..fdddfddfddddf.
-        `, SpriteKind.Player)
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile7`, function (sprite, location) {
+    info.changeLifeBy(-1)
 })
-let mySprite: Sprite = null
 let projectile: Sprite = null
 let Myplayer: Sprite = null
 Myplayer = sprites.create(img`
@@ -84,8 +58,47 @@ Myplayer = sprites.create(img`
     fddfddfddfdddf..
     ddfdddfddfddff..
     `, SpriteKind.Player)
+let Wallblock = sprites.create(img`
+    c c c c c c c c c c c c c c c c 
+    c b b b b b b b b c b b b b b b 
+    c b b b b b b b b c b b b b b b 
+    c b b b b b b b b c c b b b b b 
+    c c c c c c c c c c c c c c c c 
+    c b b b b b b c c b b b b b b b 
+    c b b b b c c c b b b b b b b c 
+    c c c c c c c c c c c c c c c c 
+    b b b b b b b b c c c b b b b b 
+    c b b b b b b b b b b c c c c b 
+    c c c c c c c c c c c c c c c c 
+    c b b b b b c c c b b b b b b b 
+    b c c c c c b b b b b b c c c c 
+    c c c c c c c c c c c c c c c c 
+    c b b b b b b b c c c c c c c c 
+    c c c c c c c c b b b b b b b c 
+    `, SpriteKind.Wall)
+let Enemyhurtyou = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . 2 2 2 2 2 2 2 2 . . . . 
+    . . . . 2 9 9 9 9 9 2 2 . . . . 
+    . . . . 2 9 9 9 9 9 2 2 2 . . . 
+    . . . . 2 9 9 9 9 9 2 2 2 2 2 . 
+    . . . . 2 2 2 2 2 2 2 2 2 2 2 . 
+    . . . . 2 2 2 2 2 2 2 2 2 2 2 . 
+    . . . . 2 2 2 2 2 2 2 2 2 2 2 . 
+    . . . 2 2 2 2 2 2 2 2 2 2 2 2 . 
+    . . . 2 2 2 2 2 2 2 2 2 2 2 . . 
+    . . . 2 2 2 2 2 2 2 2 2 2 . . . 
+    . . . . 2 2 2 . . . 2 2 2 2 . . 
+    . . . . 2 2 2 . . . 2 2 2 2 . . 
+    . . . . 2 2 2 . . . . 2 2 2 . . 
+    . . . . 2 2 2 . . . . 2 2 2 . . 
+    `, SpriteKind.Enemy)
 tiles.setCurrentTilemap(tilemap`level1`)
 scene.cameraFollowSprite(Myplayer)
-tiles.placeOnRandomTile(Myplayer, assets.tile`myTile1`)
+tiles.placeOnRandomTile(Myplayer, assets.tile`myTile3`)
+tiles.placeOnRandomTile(Enemyhurtyou, assets.tile`myTile3`)
+Enemyhurtyou.follow(Myplayer)
 Myplayer.setBounceOnWall(true)
 controller.moveSprite(Myplayer)
+info.setLife(3)
